@@ -4,13 +4,13 @@ package universalaccount;
 
 public abstract class UniversalAccount {
 
-    double fund;
-    double balance;
-    boolean overdraft;
+    public double fund;
+    protected double balance;
+    protected boolean overdraft;
     public String accountNumber;
     public String pin;
     
-    UniversalAccount(String accountNumber,String pin){
+    public UniversalAccount(String accountNumber,String pin){
         super();
         this.accountNumber = accountNumber;
         this.pin = pin;
@@ -27,7 +27,7 @@ public abstract class UniversalAccount {
     }
     
     public  boolean takeFunds(double funds){
-        if(funds >= this.fund){
+        if(funds <= this.fund){
             this.fund-=funds;
             this.balance+=funds;
             return true;
@@ -41,6 +41,15 @@ public abstract class UniversalAccount {
     public boolean addMoney(double money){
         this.balance+=money;
         return true;
+    }
+    
+    public double takeMoney(double money){
+        if(money <= this.balance){
+            this.balance-=money;
+            return money;
+        }
+        return 0;
+            
     }
             
             

@@ -47,8 +47,22 @@ public class CheckingAccount extends UniversalAccount{
         @Override
     public boolean addMoney(double money){
             totaloperation++;
-            return super.addMoney(money);
+            super.addMoney(money);
+            if(totaloperation >= CheckingAccount.operationCount)
+                balance-=penalti;
+            return true;
     }
+        
+        @Override
+   public double takeMoney(double money){
+            double money1 = super.takeMoney(money);
+            if(money1!=0){
+                totaloperation++;
+                if(totaloperation >= CheckingAccount.operationCount)
+                    balance-=penalti;
+            }
+            return money1;
+        }
     
     public int getTotalOperation(){
         return this.totaloperation;

@@ -4,9 +4,9 @@ import universalaccount.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Bank {
-    static ArrayList<UniversalAccount> UA = new ArrayList<UniversalAccount>();
+    public static ArrayList<UniversalAccount> UA = new ArrayList<UniversalAccount>();
     
-    Bank(){}
+    public Bank(){}
     
     public static  void addAccount(){
         Scanner sc = new Scanner(System.in);

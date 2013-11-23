@@ -20,8 +20,8 @@ public  class ATM {
         UniversalAccount UA = enterAccountNumberAndPin();
         if(UA!=null){
             while(true){
-                System.out.println("Выберите операцию\n1.Показать текущий баланс\n2.Положить денег на счет\n"
-                        + "3.Вложить фонды\n4.Получить фонды\n5.Выход");
+                System.out.println("Выберите операцию\n1.Показать текущий баланс\n2.Положить денег на счет\n3.Снять деньги\n"
+                        + "4.Вложить фонды\n5.Получить фонды\n6.Выход");
                 int num = sc.nextInt();
                 switch(num){
                     case 1:     
@@ -46,6 +46,18 @@ public  class ATM {
                             System.out.println("Неверный пин!");
                         break;
                     case 3:
+                        System.out.println("Количество : ");
+                        double amount1 = sc.nextDouble();
+                        System.out.println("Введите пин");
+                        temp = sc.next();
+                        if(UA.pin.equals(temp)){
+                            if(UA.takeMoney(amount1)!=0.0)
+                                System.out.println("Деньги сняты");
+                            else
+                                System.out.println("Недостаточно ресурсов");
+                        }
+                        break;
+                    case 4:
                         System.out.println("Сумма денег :");
                         double setSum = sc.nextDouble();
                         System.out.println("Введите пин");
@@ -57,7 +69,7 @@ public  class ATM {
                         else
                             System.out.println("Неверный пин!");
                         break;
-                    case 4:
+                    case 5:
                         System.out.println("Сумма денег :");
                         double getSum = sc.nextDouble();
                         System.out.println("Введите пин");
@@ -69,7 +81,7 @@ public  class ATM {
                         else
                             System.out.println("Неверный пин!");
                         break;
-                    case 5:
+                    case 6:
                         return ;
 
                 }
